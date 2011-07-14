@@ -17,10 +17,13 @@ public class SetCommand implements CommandExecutor {
 			String[] args) {
 		if (cmd.getName().equalsIgnoreCase("headgear") || cmd.getName().equalsIgnoreCase("hg"))
 		{
-			if (args[0].equalsIgnoreCase("set"))
+			if (args.length == 1)
 			{
-			extrasPlayer.setBlockOnPlayerHead((Player)sender, setType(args[1]));
+				if (args[0].equalsIgnoreCase("set"))
+				{
+					extrasPlayer.setBlockOnPlayerHead((Player)sender, setType(args[1]));
 
+				}
 			}
 		}
 		return false;
