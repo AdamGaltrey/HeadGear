@@ -3,10 +3,11 @@ package net.minedev.headgear;
 import net.minedev.commands.HelpCommand;
 import net.minedev.commands.InfoCommand;
 import net.minedev.commands.ListCommand;
-import net.minedev.commands.RemoveCommand;
 import net.minedev.commands.SetCommand;
 import net.minedev.listeners.HgPlayerListener;
 
+import org.bukkit.craftbukkit.CraftServer;
+import org.bukkit.craftbukkit.command.ColouredConsoleSender;
 import org.bukkit.event.Event.Priority;
 import org.bukkit.event.Event.Type;
 import org.bukkit.plugin.PluginManager;
@@ -18,6 +19,7 @@ public class HeadGear extends JavaPlugin
 	{
 		setupListeners();
 		setupCommands();
+		console.sendMessage("");
 	}
 	
 	public void onDisable()
@@ -34,7 +36,6 @@ public class HeadGear extends JavaPlugin
 	public void setupCommands()
 	{
 		getCommand("set").setExecutor(new SetCommand());
-		getCommand("remove").setExecutor(new RemoveCommand());
 		getCommand("list").setExecutor(new ListCommand());
 		getCommand("info").setExecutor(new InfoCommand());
 		getCommand("help").setExecutor(new HelpCommand());
@@ -42,4 +43,6 @@ public class HeadGear extends JavaPlugin
 
 	PluginManager pm;
 	public HgPlayerListener playerlistener = new HgPlayerListener();
+	CraftServer server = (CraftServer) getServer();
+	ColouredConsoleSender console = new ColouredConsoleSender(server);
 }
