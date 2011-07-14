@@ -30,7 +30,7 @@ public class SetCommand implements CommandExecutor {
 	{
 
 		Material m = Material.AIR;
-		if (materialName.equalsIgnoreCase("BEDROCK")) { m = Material.BEDROCK;
+		if (materialName.equalsIgnoreCase("INVINCIBLE")) { m = Material.BEDROCK;
 		} else {
 			if (materialName.equalsIgnoreCase("GLOW")) { m = Material.GLOWSTONE;
 			} else {
