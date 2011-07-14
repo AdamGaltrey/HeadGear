@@ -15,11 +15,13 @@ public class SetCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label,
 			String[] args) {
-		if (cmd.getName().equalsIgnoreCase("set"))
+		if (cmd.getName().equalsIgnoreCase("headgear") || cmd.getName().equalsIgnoreCase("hg"))
 		{
+			if (args[0].equalsIgnoreCase("set"))
+			{
+			extrasPlayer.setBlockOnPlayerHead((Player)sender, setType(args[1]));
 
-			extrasPlayer.setBlockOnPlayerHead((Player)sender, setType(label));
-
+			}
 		}
 		return false;
 	}
