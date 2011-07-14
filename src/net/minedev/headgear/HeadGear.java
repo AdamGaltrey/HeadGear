@@ -13,5 +13,15 @@ public class HeadGear extends JavaPlugin
 	{
 		
 	}
+	
+	public void setupPermissions()
+	{
+		
+	}
+	
+	public void setupListeners()
+	{
+		
+	}
 
 }
