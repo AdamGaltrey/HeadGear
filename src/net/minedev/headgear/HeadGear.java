@@ -1,5 +1,10 @@
 package net.minedev.headgear;
 
+import net.minedev.commands.HelpCommand;
+import net.minedev.commands.InfoCommand;
+import net.minedev.commands.ListCommand;
+import net.minedev.commands.RemoveCommand;
+import net.minedev.commands.SetCommand;
 import net.minedev.listeners.HgPlayerListener;
 
 import org.bukkit.event.Event.Priority;
@@ -12,6 +17,7 @@ public class HeadGear extends JavaPlugin
 	public void onEnable()
 	{
 		setupListeners();
+		setupCommands();
 	}
 	
 	public void onDisable()
@@ -23,6 +29,15 @@ public class HeadGear extends JavaPlugin
 	{
 		pm = getServer().getPluginManager();
 		pm.registerEvent(Type.PLAYER_MOVE, playerlistener, Priority.Normal, this);
+	}
+	
+	public void setupCommands()
+	{
+		getCommand("set").setExecutor(new SetCommand());
+		getCommand("remove").setExecutor(new RemoveCommand());
+		getCommand("list").setExecutor(new ListCommand());
+		getCommand("info").setExecutor(new InfoCommand());
+		getCommand("help").setExecutor(new HelpCommand());
 	}
 
 	PluginManager pm;
