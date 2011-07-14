@@ -18,7 +18,7 @@ public class SetCommand implements CommandExecutor {
 		if (cmd.getName().equalsIgnoreCase("set"))
 		{
 
-			extrasPlayer.setBlockOnPlayerHead((Player)sender, 5);
+			extrasPlayer.setBlockOnPlayerHead((Player)sender, setType(label));
 
 		}
 		return false;
@@ -27,14 +27,14 @@ public class SetCommand implements CommandExecutor {
 	public Material setType(String materialName)
 	{
 
-		Material m = null;
-		if (materialName.equalsIgnoreCase("PLANKS")) { m = Material.WOOD;
+		Material m = Material.AIR;
+		if (materialName.equalsIgnoreCase("BEDROCK")) { m = Material.BEDROCK;
 		} else {
-			if (materialName.equalsIgnoreCase("WOOL")) { m = Material.WOOL;
+			if (materialName.equalsIgnoreCase("GLOW")) { m = Material.GLOWSTONE;
 			} else {
-				if (materialName.equalsIgnoreCase("GLASS")) { m = Material.GLASS;
+				if (materialName.equalsIgnoreCase("INVISIBLE")) { m = Material.GLASS;
 				} else {
-					if (materialName.equalsIgnoreCase("BOOKSHELF")) { m = Material.BOOKSHELF;
+					if (materialName.equalsIgnoreCase("SUPERSPEED")) { m = Material.DIAMOND;
 					}
 
 				}
