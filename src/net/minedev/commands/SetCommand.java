@@ -1,5 +1,7 @@
 package net.minedev.commands;
 
+import net.minedev.invisibility.Invisibility;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -16,6 +18,8 @@ public class SetCommand implements CommandExecutor {
 	ExtrasPlayer extrasPlayer = new ExtrasPlayer();
 	ExtrasInventory extrasInventory = new ExtrasInventory();
 	ExtrasColour extrasColour = new ExtrasColour();
+	
+	Invisibility invisible = new Invisibility();
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label,
@@ -51,17 +55,20 @@ public class SetCommand implements CommandExecutor {
 						}
 					} 
 					
-					if (args[1].equalsIgnoreCase("invisible"))
+					if (args[1].equalsIgnoreCase("invisible") && !invisible.isInvisible(p))
 					{
 						if (extrasInventory.getAmountOf(p, Material.GLASS) >= 16)
 						{
 							extrasInventory.removeFromInventory(p, Material.GLASS, 16);
 							extrasPlayer.setBlockOnPlayerHead((Player)sender, setType(args[1]));
+							invisible.makeInvisible(p); //Makes the player invisible
 							p.sendMessage(ChatColor.GREEN + "You have gained God-Like powers!");
 						} else {
 							p.sendMessage(ChatColor.RED + "You dont have enough" + ChatColor.DARK_RED + " GlowStone" + ChatColor.RED + " to do this!");
 						}
-					} 
+					} else {
+						p.sendMessage(ChatColor.RED + "You are already invisible!");
+					}
 					
 					if (args[1].equalsIgnoreCase("superspeed"))
 					{
@@ -82,7 +89,6 @@ public class SetCommand implements CommandExecutor {
 
 	public Material setType(String materialName)
 	{
-
 		Material m = Material.AIR;
 		if (materialName.equalsIgnoreCase("INVINCIBLE")) { m = Material.BEDROCK;
 		} else {

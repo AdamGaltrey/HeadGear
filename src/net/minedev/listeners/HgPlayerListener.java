@@ -1,5 +1,7 @@
 package net.minedev.listeners;
 
+import net.minedev.invisibility.Invisibility;
+
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerListener;
@@ -41,8 +43,8 @@ public class HgPlayerListener extends PlayerListener{
 	
 	public void onPlayerJoin(PlayerJoinEvent event)
 	{
-
 		Player p = event.getPlayer();
+		new Invisibility().sendInvisibilityPackets(p);
 		if (!p.getInventory().getHelmet().equals(315) 
 				|| !p.getInventory().getHelmet().equals(311) 
 				|| !p.getInventory().getHelmet().equals(319) 
